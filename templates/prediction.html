@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+
+  <title>Prediction</title>
+</head>
+
+<body style=" background-image: url('/static/bg23.jpg'); background-repeat: no-repeat; background-size: cover; " >
+  <header class="text-gray-600 body-font -my-7">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-purple-500 rounded-full"
+          viewBox="0 0 24 24">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+        </svg>
+        <span class="ml-3 text-xl">Predict The Traffic</span>
+      </a>
+      <a href="index.html"><button
+          class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Back
+          to main page
+          <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </button></a>
+    </div>
+  </header>
+  <hr>
+<hr>
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <!-- Option 1: Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+  <!-- Option 2: Separate Popper and Bootstrap JS -->
+  <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+
+    <section class="text-red body-font -my-6">
+      <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+        <div class=" lg:flex-grow md:w-1/2 lg:pr-20 md:pr-12 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+          <h1 class="leading-relaxed text-align-center  " style="font-size: xx-large; color: rgb(6, 4, 4);">Your network is {{prediction_text}}</h1>
+          </div>
+      </div>
+    </section>
+
+  <section class=" body-font -my-19" style="width: 100%;">
+    <div class="container px-10  mx-auto flex flex-wrap">
+      <form action="/prediction" method="post" style="display: flex; flex-wrap: wrap; width: 90%; color: #060505;" >
+        <div style="width: 40%; padding-right: 5%;  ">
+        <div class="mb-3" style="margin-bottom: 10px;">
+          <label for="L4_SRC_PORT" class="form-label">L4_SRC_PORT</label>
+          <input type="number" class="form-control" name="input1" placeholder="give source port">
+        </div>
+        <div class="mb-3">
+          <label for="L4_DST_PORT" class="form-label">L4_DST_PORT</label>
+          <input type="number" class="form-control" name="input2" placeholder="give destination port">
+        </div>
+        <div class="mb-3">
+          <label for="PROTOCOL" class="form-label">PROTOCOL</label>
+          <input type="number" class="form-control" name="input3" placeholder="protocol number">
+        </div>
+
+        <div class="mb-3">
+          <label for="IN_PKTS" class="form-label">IN_PKTS</label>
+          <input type="number" class="form-control" name="input4" placeholder="input packets">
+        </div>
+
+        <div class="mb-3">
+          <label for="FLOW_DURATION_MILLISECONDS" class="form-label">FLOW_DURATION_MILLISECONDS</label>
+          <input type="number" class="form-control" name="input5" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="DURATION_IN" class="form-label">DURATION_IN</label>
+          <input type="number" class="form-control" name="input6" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="DURATION_OUT" class="form-label">DURATION_OUT</label>
+          <input type="number" class="form-control" name="input7" placeholder="">
+        </div>
+
+        <div class="mb-3">
+          <label for="MAX_TTL" class="form-label">MAX_TTL</label>
+          <input type="number" class="form-control" name="input8" placeholder="">
+        </div>
+
+        <div class="mb-3">
+          <label for="SHORTEST_FLOW_PKT" class="form-label">SHORTEST_FLOW_PKT</label>
+          <input type="number" class="form-control" name="input9" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="MIN_IP_PKT_LEN" class="form-label">MIN_IP_PKT_LEN</label>
+          <input type="number" class="form-control" name="input10" placeholder="">
+        </div>
+
+        <div class="mb-3">
+          <label for="RETRANSMITTED_IN_PKTS" class="form-label">RETRANSMITTED_IN_PKTS</label>
+          <input type="number" class="form-control" name="input11" placeholder="">
+        </div>
+
+        <div class="mb-3">
+          <label for="RETRANSMITTED_OUT_PKTS" class="form-label">RETRANSMITTED_OUT_PKTS</label>
+          <input type="number" class="form-control" name="input12" placeholder="">
+        </div>
+        <div class="mb-3">
+          <label for="SRC_TO_DST_AVG_THROUGHPUT" class="form-label">SRC_TO_DST_AVG_THROUGHPUT</label>
+          <input type="number" class="form-control" name="input13" placeholder="">
+        </div>
+        </div>
+    
+    
+        <div style="width: 40%; padding-left: 5%;">
+    
+    
+    
+      <div class="mb-3" style="margin-bottom: 10px;">
+      <label for="DST_TO_SRC_AVG_THROUGHPUT" class="form-label">DST_TO_SRC_AVG_THROUGHPUT</label>
+      <input type="number" class="form-control" name="input14" placeholder="">
+    </div>
+    <div class="mb-3">
+      <label for="NUM_PKTS_UP_TO_128_BYTES" class="form-label">NUM_PKTS_UP_TO_128_BYTES</label>
+      <input type="number" class="form-control" name="input15" placeholder="">
+    </div>
+    <div class="mb-3">
+      <label for="NUM_PKTS_128_TO_256_BYTES" class="form-label">NUM_PKTS_128_TO_256_BYTES</label>
+      <input type="number" class="form-control" name="input16" placeholder="">
+    </div>
+    <div class="mb-3">
+      <label for="NUM_PKTS_256_TO_512_BYTES" class="form-label">NUM_PKTS_256_TO_512_BYTES</label>
+      <input type="number" class="form-control" name="input17" placeholder="">
+    </div>
+    <div class="mb-3">
+      <label for="NUM_PKTS_512_TO_1024_BYTES" class="form-label">NUM_PKTS_512_TO_1024_BYTES</label>
+      <input type="number" class="form-control" name="input18" placeholder="">
+    </div>
+    <div class="mb-3">
+      <label for="NUM_PKTS_1024_TO_1514_BYTES" class="form-label">NUM_PKTS_1024_TO_1514_BYTES</label>
+      <input type="number" class="form-control" name="input19" placeholder="">
+    </div>
+    <div class="mb-3">
+      <label for="TCP_WIN_MAX_IN" class="form-label">TCP_WIN_MAX_IN</label>
+      <input type="number" class="form-control" name="input20" placeholder="">
+    </div>
+    <div class="mb-3">
+      <label for="TCP_WIN_MAX_OUT" class="form-label">TCP_WIN_MAX_OUT</label>
+      <input type="number" class="form-control" name="input21" placeholder="">
+    </div>
+
+    <div class="mb-3">
+      <label for="ICMP_IPV4_TYPE" class="form-label">ICMP_IPV4_TYPE</label>
+      <input type="number" class="form-control" name="input22" placeholder="">
+    </div>
+    <div class="mb-3">
+      <label for="DNS_QUERY_ID" class="form-label">DNS_QUERY_ID</label>
+      <input type="number" class="form-control" name="input23" placeholder="">
+    </div>
+    <div class="mb-3">
+      <label for="DNS_QUERY_TYPE" class="form-label">DNS_QUERY_TYPE</label>
+      <input type="number" class="form-control" name="input24" placeholder="">
+    </div>
+    <div class="mb-3">
+      <label for="DNS_TTL_ANSWER" class="form-label">DNS_TTL_ANSWER</label>
+      <input type="number" class="form-control" name="input25" placeholder="">
+    </div>
+    <div class="mb-3">
+      <label for="FTP_COMMAND_RET_CODE" class="form-label">FTP_COMMAND_RET_CODE</label>
+      <input type="number" class="form-control" name="input26" placeholder="">
+    </div>
+    </div>
+    <div style="width: 100%; text-align: left; margin-top: 20px; margin-bottom: 20px;">
+    <button type="submit" class="btn btn-primary " >DETECT</button>
+    
+  </div>
+</form>
+    </div>
+  </section>
+<hr><hr>
+ 
+
+  <!-- footer-->
+  <footer class="text-gray-600 body-font">
+    <div >
+      <div class="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
+        <a class="flex title-font font-medium items-center md:justify-start justify-center text-gray-900">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-purple-500 rounded-full"
+            viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <span class="ml-3 text-xl">Network Classification</span>
+        </a>
+        <p class="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">©Network Intrustion 
+          
+        </p>
+        <span class="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+          
+          <a class="ml-3 text-gray-500" href="http://www.linkedin.com/in/ramya-bonumaddi-3987a220a">
+            <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+              <path stroke="none"
+                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+              <circle cx="4" cy="4" r="2" stroke="none"></circle>
+            </svg>
+          </a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
